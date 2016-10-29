@@ -44,9 +44,14 @@ class User extends Password{
 			$stmt = $this->_db->prepare('SELECT id,username,slug,group_id FROM users WHERE username = :username');
 			$stmt->execute(array('username' => $username));			
 			$row = $stmt->fetch();
-				
-		    $_SESSION['loggedin'] = true;				
-		    return true;
+			$sess = array(
+				$_SESSION['loggedin'] = true,
+				$_SESSION['username'] = $row['username'],				
+				$_SESSION['group'] = $row['group_id'],
+				$_SESSION['slug'] = $row['slug'],
+			);
+		    
+		    return $sess;
 		}		
 	}
 	

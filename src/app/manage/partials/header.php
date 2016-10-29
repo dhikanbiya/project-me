@@ -42,7 +42,8 @@ if(!$user->is_logged_in()){ header('Location: ../login.php'); }
                         <a href="#">
                             Simple Blog
                         </a>										
-                    </li>                   
+                    </li>     
+										<li class="user">Hallo, <?php echo $_SESSION['username'];?></li>              
                     <li>
                         <a href="index.php">Dashboard</a>
                     </li>
