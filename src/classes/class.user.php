@@ -49,6 +49,7 @@ class User extends Password{
 				$_SESSION['username'] = $row['username'],				
 				$_SESSION['group'] = $row['group_id'],
 				$_SESSION['slug'] = $row['slug'],
+				$_SESSION['id'] = $row['id']
 			);
 		    
 		    return $sess;

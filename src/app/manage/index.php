@@ -19,6 +19,7 @@
 		exit;
 	} 
 	?>
+	
 <table class="table table-striped">
     <thead>
         <tr>
@@ -31,8 +32,9 @@
     <tbody>
 			<?php
 				try {
-
-					$stmt = $db->query('SELECT id,created_at, title, slug, content FROM posts ORDER BY id DESC');
+					
+					$stmt = $db->prepare('SELECT id,created_at, title, slug, content FROM posts where user_id = ? ORDER BY id DESC');
+					$stmt->execute(array($_SESSION['id']));
 					while($row = $stmt->fetch()){
 				
 						echo '<tr>';

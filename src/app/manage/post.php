@@ -52,7 +52,7 @@ if(isset($error)){
 }	
 ?>
                               
-<h4>New Posts <?php echo $_SESSION['username']; ?></h4>												
+<h4>New Posts</h4>												
 <form method="post" action="">
     <div class="form-group">
         <label for="title">Title</label>
