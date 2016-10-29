@@ -1,6 +1,17 @@
 <?php include('partials/header.php'); ?> 
 
 <?php
+//if id not exist
+$stmt = $db->prepare('SELECT id, title, img_name, slug, content, created_at FROM posts WHERE slug = ? AND user_id = ?');
+$stmt->execute(array($_GET['id'],$_SESSION['id']));
+$row = $stmt->fetch();
+//if post does not exists redirect user.
+if($row['id'] == ''){
+	header('Location: ./');
+	exit;
+}
+
+
 
 //if form has been submitted process it
 if(isset($_POST['submit'])){
