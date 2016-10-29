@@ -1,4 +1,5 @@
-<?php include('partials/header.php'); ?>                               
+<?php include('partials/header.php'); ?>    
+<?php if($_SESSION['group']==35){ ?>                           
 <h4>List Users</h4>												
 <table class="table table-striped">
     <thead>
@@ -42,3 +43,7 @@
 </div>
 <!-- /#page-content-wrapper -->   
 <?php include('partials/footer.php'); ?>
+<?php }else{
+	header('Location: index.php'); 
+	
+} ?>
