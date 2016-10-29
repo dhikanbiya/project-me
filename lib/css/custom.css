@@ -1,0 +1,34 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.post{
+	background-color:#ecf0f1;
+	min-height:200px;
+	padding:15px;
+	margin-bottom: 20px;
+}
+.post .title{
+	font-weight:bold;
+	font-size:16px;	
+}
+.post .date{
+	font-size:12px;
+}
+.post .body{
+	
+}
+.post img{
+	width:auto;
+	height:200px;
+	margin:10px auto;
+	
+}
+.post .footer{
+	text-align: right;
+	font-size: 12px;
+	margin-top:20px;
+}
