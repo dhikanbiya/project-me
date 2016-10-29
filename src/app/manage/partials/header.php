@@ -50,13 +50,13 @@ if(!$user->is_logged_in()){ header('Location: ../login.php'); }
                     <li>
                         <a href="post.php">Post</a>
                     </li>
-										<?php if($_SESSION['group']==35): ?>
+										<?php if($_SESSION['group']==34): ?>
                     <li>
                         <a href="users.php">Users</a>
                     </li>                
 									<?php endif ?>
                   <li>
-                      <a href="update.php">Update Password</a>
+                      <a href="update.php?id=<?php echo $_SESSION['slug'] ?>">Update Password</a>
                   </li>
                     <li>
                         <a href="../logout.php">Logout</a>

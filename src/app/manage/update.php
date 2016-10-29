@@ -1,7 +1,8 @@
 <?php include('partials/header.php'); ?> 
 
 	<?php
-
+		
+	
 	//if form has been submitted process it
 	if(isset($_POST['submit'])){
 
@@ -70,11 +71,15 @@
 	}
 
 		try {
+			if($_GET['id']==$_SESSION['slug']){
+				$stmt = $db->prepare('SELECT id, slug FROM users WHERE slug = :slug') ;
+				$stmt->execute(array(':slug' => $_GET['id']));
+				$row = $stmt->fetch(); 					
+			}else{
+				header('Location: index.php'); 
+			}
 
-			$stmt = $db->prepare('SELECT id, slug FROM users WHERE slug = :slug') ;
-			$stmt->execute(array(':slug' => $_GET['id']));
-			$row = $stmt->fetch(); 
-
+			
 		} catch(PDOException $e) {
 		    echo $e->getMessage();
 		}
