@@ -1,6 +1,7 @@
 <?php
 //include config
 require_once('../db/con.php');
+require_once('../control/functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,13 +61,14 @@ require_once('../db/con.php');
 					$hashedpassword = $user->password_hash($password, PASSWORD_BCRYPT);
 
 					try {
-
+						$slug = slug($username);
 						//insert into database
-						$stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)') ;
+						$stmt = $db->prepare('INSERT INTO users (username,password,email,slug) VALUES (:username, :password, :email,:slug)') ;
 						$stmt->execute(array(
 							':username' => $username,
 							':password' => $hashedpassword,
-							':email' => $email
+							':email' => $email,
+							':slug' => $slug
 						));
 
 						//redirect to index page
