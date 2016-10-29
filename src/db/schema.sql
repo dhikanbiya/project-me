@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 29, 2016 at 03:19 AM
+-- Generation Time: Oct 29, 2016 at 05:34 AM
 -- Server version: 5.6.33
 -- PHP Version: 5.6.27
 
@@ -48,6 +48,7 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `name`, `desc`, `slug`, `created_at`) VALUES
+(3, 'user', 'general user', 'general_user', '2016-10-29 02:52:10'),
 (34, 'super admin', 'master user', 'super_admin', '2016-10-28 23:39:31');
 
 -- --------------------------------------------------------
@@ -71,9 +72,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `img_name`, `user_id`, `slug`, `created_at`) VALUES
-(1, 'Sample post', 'You guys realize you live in a sewer, right? Uh, is the puppy mechanical in any way? Come, Comrade Bender! We must take to the streets! I daresay that Fry has discovered the smelliest object in the known universe! Good news, everyone! There\'s a report on TV with some very bad news!\r\n\r\n', 'sample.png', 1, 'sample_post', '2016-10-28 19:26:37'),
-(2, 'sample postsample', 'Pug four dollar toast health goth church-key wolf. Authentic YOLO shoreditch raw denim occupy woke. Mixtape pabst unicorn ramps, selvage pour-over sartorial. Hammock woke health goth single-origin coffee hexagon scenester. Kitsch yr thundercats, fingerstache readymade direct trade normcore vaporware. Occupy hella activated charcoal tacos, crucifix health goth yr. Pour-over locavore trust fund pok pok, etsy aesthetic gluten-free 90\'s williamsburg ethical gochujang hammock deep v ennui.', 'band.png', 1, 'sample-postsample', '2016-10-28 19:32:33'),
-(3, 'adafafasdasdas', 'agasfsaf', '', 0, 'adafafasdasdas', '2016-10-28 21:34:24');
+(1, 'Sample post', 'You guys realize you live in a sewer, right? Uh, is the puppy mechanical in any way? Come, Comrade Bender! We must take to the streets! I daresay that Fry has discovered the smelliest object in the known universe! Good news, everyone! There\'s a report on TV with some very bad news!\r\n\r\n', 'sample.png', 8, 'sample_post', '2016-10-28 19:26:37'),
+(2, 'sample postsample', 'Pug four dollar toast health goth church-key wolf. Authentic YOLO shoreditch raw denim occupy woke. Mixtape pabst unicorn ramps, selvage pour-over sartorial. Hammock woke health goth single-origin coffee hexagon scenester. Kitsch yr thundercats, fingerstache readymade direct trade normcore vaporware. Occupy hella activated charcoal tacos, crucifix health goth yr. Pour-over locavore trust fund pok pok, etsy aesthetic gluten-free 90\'s williamsburg ethical gochujang hammock deep v ennui.', 'band.png', 8, 'sample-postsample', '2016-10-28 19:32:33'),
+(3, 'adafafasdasdas', 'agasfsaf', '', 1, 'adafafasdasdas', '2016-10-28 21:34:24'),
+(4, 'Hello', 'this is another post', '', 8, 'hello', '2016-10-29 03:32:35');
 
 -- --------------------------------------------------------
 
@@ -96,7 +98,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `group_id`, `created_at`, `slug`) VALUES
-(8, 'demo', '$2y$10$SOFK48aLN4LL0n1kDFaOHumm4.beeBJjfZQi3KjKWhlaXMGA81amy', 'demo@demo.com', 34, '2016-10-28 20:17:00', 'demo');
+(8, 'demo', '$2y$10$SOFK48aLN4LL0n1kDFaOHumm4.beeBJjfZQi3KjKWhlaXMGA81amy', 'demo@demo.com', 34, '2016-10-28 20:17:00', 'demo'),
+(9, 'dhika', '$2y$10$yW0.4KScBIBBO5zORjgKNuJ5zrJtP7/20w8zXHBLl7mTzfVD/RDiW', 'dhika.rizki@bppt.go.id', 3, '2016-10-29 01:38:22', ''),
+(10, 'mika', '$2y$10$qw13QE4rfmWRz9mRqZRwuukkXzk0iP.qB7Fd4yN13zqKHb2HZzjJ2', 'mika@mika.com', 3, '2016-10-29 01:45:31', 'mika');
 
 --
 -- Indexes for dumped tables
@@ -144,9 +148,9 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
