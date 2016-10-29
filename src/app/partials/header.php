@@ -18,6 +18,7 @@
         <!-- Custom styles for this template -->
         <link href="../../lib/css/custom.css" rel="stylesheet"> 
         <link href="../../lib/css/siplogin.css" rel="stylesheet"> 
+		    <script src="../../lib/js/jquery.min.js"></script>    
 
     </head>
 
