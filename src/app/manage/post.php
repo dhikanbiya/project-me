@@ -25,11 +25,12 @@ if(isset($_POST['submit'])){
 			$slug = slug($title);
 
 			//insert into database
-			$stmt = $db->prepare('INSERT INTO posts (title,slug,content) VALUES (:title, :slug, :content)');
+			$stmt = $db->prepare('INSERT INTO posts (title,slug,content,user_id) VALUES (:title, :slug, :content, :user_id)');
 			$stmt->execute(array(
 				'title' => $title,
 				'slug' => $slug,
-				'content' => $content				
+				'content' => $content,
+				'user_id' => $_SESSION['id'],				
 			));
 
 			//redirect to index page
