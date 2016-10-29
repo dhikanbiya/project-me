@@ -1,5 +1,5 @@
 <?php include('partials/header.php'); ?>    
-<?php if($_SESSION['group']==35){ ?>                           
+<?php if($_SESSION['group']==34){ ?>                           
 <h4>List Users</h4>												
 <table class="table table-striped">
     <thead>
