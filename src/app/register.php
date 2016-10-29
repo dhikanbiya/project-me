@@ -27,32 +27,71 @@ require_once('../db/con.php');
 
     <body>
 			<?php
-			//process login form if submitted
+
+			//if form has been submitted process it
 			if(isset($_POST['submit'])){
 
-				$username = trim($_POST['username']);
-				$password = trim($_POST['password']);
-				$email= $_POST['email'];
-		
-				if($user->login($username,$password)){ 
+				//collect form data
+				extract($_POST);
 
-					//logged in return to index page
-					header('Location: manage/index.php');
-					exit;
-		
-
-				} else {
-					$message = '<p class="error">Wrong username or password</p>';
+				//very basic validation
+				if($username ==''){
+					$error[] = 'Please enter the username.';
 				}
 
-			}//end if submit
+				if($password ==''){
+					$error[] = 'Please enter the password.';
+				}
 
-			
+				if($passwordConfirm ==''){
+					$error[] = 'Please confirm the password.';
+				}
+
+				if($password != $passwordConfirm){
+					$error[] = 'Passwords do not match.';
+				}
+
+				if($email ==''){
+					$error[] = 'Please enter the email address.';
+				}
+
+				if(!isset($error)){
+
+					$hashedpassword = $user->password_hash($password, PASSWORD_BCRYPT);
+
+					try {
+
+						//insert into database
+						$stmt = $db->prepare('INSERT INTO users (username,password,email) VALUES (:username, :password, :email)') ;
+						$stmt->execute(array(
+							':username' => $username,
+							':password' => $hashedpassword,
+							':email' => $email
+						));
+
+						//redirect to index page
+						header('Location: register.php');
+						exit;
+
+					} catch(PDOException $e) {
+					    echo $e->getMessage();
+					}
+
+				}
+
+			}
+
+			//check for any errors
+			if(isset($error)){
+				foreach($error as $error){
+					echo '<p class="error">'.$error.'</p>';
+				}
+			}
 			?>
 
         
 			<div class="container">      		
-			<form class="form-signin"  method="post" action="../control/register_control.php">
+			<form class="form-signin"  method="post" action="">
 				<h4 class="text-right">Register Account</h4>
 			  <div class="form-group">
 			    <label for="emai">Username</label>
@@ -65,6 +104,10 @@ require_once('../db/con.php');
 			  <div class="form-group">
 			    <label for="password">Password</label>
 			    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+			  </div>
+			  <div class="form-group">
+			    <label for="password">Password Confirm</label>
+			    <input type="password" class="form-control" id="password" placeholder="passwordConfirm" name="passwordConfirm">
 			  </div>			  			  
 			  <input type="submit" name="submit" value="submit" id="submit" class="btn btn-default">
 			</form>
